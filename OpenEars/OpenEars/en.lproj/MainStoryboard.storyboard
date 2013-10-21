@@ -1,23 +1,114 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="4">
             <objects>
                 <viewController id="2" customClass="AAViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hypothesis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egt-Hu-mla">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1l-Ac-0mb">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Utterance ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAt-z3-wQ7">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hypothesis:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKY-8y-fmc">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbr-w6-0G8">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Utterance ID:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alp-GW-vk3">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Mlr-J4-bKO">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="oCe-IJ-XPR"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Recognized Words:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAr-5O-wpl">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tbr-w6-0G8" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0bp-5K-wDT"/>
+                            <constraint firstItem="Alp-GW-vk3" firstAttribute="top" secondItem="5" secondAttribute="top" constant="189" id="2tQ-qL-wvz"/>
+                            <constraint firstItem="d1l-Ac-0mb" firstAttribute="top" secondItem="Tbr-w6-0G8" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="66t-3A-tDZ"/>
+                            <constraint firstItem="d1l-Ac-0mb" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="6d9-Uy-6m7"/>
+                            <constraint firstItem="egt-Hu-mla" firstAttribute="top" secondItem="rKY-8y-fmc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6eF-7t-XdB"/>
+                            <constraint firstItem="Mlr-J4-bKO" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="88y-6V-bCH"/>
+                            <constraint firstAttribute="trailing" secondItem="Alp-GW-vk3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="AFa-7l-Ozc"/>
+                            <constraint firstAttribute="trailing" secondItem="egt-Hu-mla" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="FSn-YL-GEv"/>
+                            <constraint firstItem="Alp-GW-vk3" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K7C-L3-4Hp"/>
+                            <constraint firstItem="egt-Hu-mla" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ME3-JU-E0e"/>
+                            <constraint firstAttribute="trailing" secondItem="rAt-z3-wQ7" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="MGt-tt-fzi"/>
+                            <constraint firstItem="Mlr-J4-bKO" firstAttribute="top" secondItem="tAr-5O-wpl" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="RmQ-Lh-XFX"/>
+                            <constraint firstAttribute="trailing" secondItem="Tbr-w6-0G8" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="RrS-Rh-HMV"/>
+                            <constraint firstAttribute="trailing" secondItem="Mlr-J4-bKO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="TFE-Rc-3jH"/>
+                            <constraint firstItem="rAt-z3-wQ7" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dm9-mA-8Mp"/>
+                            <constraint firstItem="rKY-8y-fmc" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gWd-Dz-NJU"/>
+                            <constraint firstItem="rAt-z3-wQ7" firstAttribute="top" secondItem="Alp-GW-vk3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gku-Ft-WfK"/>
+                            <constraint firstItem="tAr-5O-wpl" firstAttribute="centerX" secondItem="Mlr-J4-bKO" secondAttribute="centerX" type="default" id="jtu-Uv-qnY"/>
+                            <constraint firstAttribute="trailing" secondItem="rKY-8y-fmc" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="kRR-6i-174"/>
+                            <constraint firstItem="Tbr-w6-0G8" firstAttribute="top" secondItem="5" secondAttribute="top" constant="114" id="mmM-i1-7Tr"/>
+                            <constraint firstAttribute="trailing" secondItem="d1l-Ac-0mb" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="rP3-Wa-82r"/>
+                            <constraint firstAttribute="bottom" secondItem="Mlr-J4-bKO" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="rXe-2t-E2f"/>
+                            <constraint firstItem="rKY-8y-fmc" firstAttribute="top" secondItem="5" secondAttribute="top" constant="37" id="rg9-YQ-YIU"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="hypothesisOutputLabel" destination="egt-Hu-mla" id="DxM-ka-GDO"/>
+                        <outlet property="recognizedWordsTextView" destination="Mlr-J4-bKO" id="CYg-Zu-GKh"/>
+                        <outlet property="scoreOutputLabel" destination="d1l-Ac-0mb" id="UJ7-0t-5xV"/>
+                        <outlet property="utteranceOutputLabel" destination="rAt-z3-wQ7" id="hvh-kn-TeS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="AAViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AAViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="hypothesisOutputLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recognizedWordsTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="scoreOutputLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="utteranceOutputLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

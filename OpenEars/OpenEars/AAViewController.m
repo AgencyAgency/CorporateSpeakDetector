@@ -17,6 +17,12 @@
 @property (nonatomic, strong) PocketsphinxController *pocketsphinxController;
 @property (strong, nonatomic) OpenEarsEventsObserver *openEarsEventsObserver;
 
+@property (strong, nonatomic) NSArray *recognizedWords;
+
+@property (weak, nonatomic) IBOutlet UILabel *hypothesisOutputLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreOutputLabel;
+@property (weak, nonatomic) IBOutlet UILabel *utteranceOutputLabel;
+@property (weak, nonatomic) IBOutlet UITextView *recognizedWordsTextView;
 @end
 
 @implementation AAViewController
@@ -26,9 +32,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // Setup view:
+    self.hypothesisOutputLabel.text = @"...Waiting for you to speak...";
+    self.scoreOutputLabel.text = @"...";
+    self.utteranceOutputLabel.text = @"...";
+    self.recognizedWordsTextView.text = [self.recognizedWords componentsJoinedByString:@", "];
+    
+    // Start listening:
     [self.openEarsEventsObserver setDelegate:self];
-    [self doSomething];
-
+    [self detectSpeech];
 }
 
 
@@ -47,15 +59,22 @@
 	return _openEarsEventsObserver;
 }
 
+- (NSArray *)recognizedWords
+{
+    if (!_recognizedWords) {
+        _recognizedWords = @[@"WORD", @"STATEMENT", @"OTHER WORD", @"A PHRASE"];
+    }
+    return _recognizedWords;
+}
 
-
-- (void)doSomething
+- (void)detectSpeech
 {
     LanguageModelGenerator *lmGenerator = [[LanguageModelGenerator alloc] init];
     
-    NSArray *words = [NSArray arrayWithObjects:@"WORD", @"STATEMENT", @"OTHER WORD", @"A PHRASE", nil];
     NSString *name = @"NameIWantForMyLanguageModelFiles";
-    NSError *err = [lmGenerator generateLanguageModelFromArray:words withFilesNamed:name forAcousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to create a Spanish language model instead of an English one.
+    NSError *err = [lmGenerator generateLanguageModelFromArray:self.recognizedWords
+                                                withFilesNamed:name
+                                        forAcousticModelAtPath:[AcousticModel pathToModel:@"AcousticModelEnglish"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" to create a Spanish language model instead of an English one.
     
     
     NSDictionary *languageGeneratorResults = nil;
@@ -86,6 +105,9 @@
 
 - (void) pocketsphinxDidReceiveHypothesis:(NSString *)hypothesis recognitionScore:(NSString *)recognitionScore utteranceID:(NSString *)utteranceID {
 	NSLog(@"The received hypothesis is %@ with a score of %@ and an ID of %@", hypothesis, recognitionScore, utteranceID);
+    self.hypothesisOutputLabel.text = hypothesis;
+    self.scoreOutputLabel.text = recognitionScore;
+    self.utteranceOutputLabel.text = utteranceID;
 }
 
 - (void) pocketsphinxDidStartCalibration {
