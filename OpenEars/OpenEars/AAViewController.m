@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreOutputLabel;
 @property (weak, nonatomic) IBOutlet UILabel *utteranceOutputLabel;
 @property (weak, nonatomic) IBOutlet UITextView *recognizedWordsTextView;
+@property (weak, nonatomic) IBOutlet UITextView *detectedWordsTextView;
 @end
 
 @implementation AAViewController
@@ -33,10 +34,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     // Setup view:
-    self.hypothesisOutputLabel.text = @"...Waiting for you to speak...";
+    self.hypothesisOutputLabel.text = @"...Listening for Corporate Speak...";
     self.scoreOutputLabel.text = @"...";
     self.utteranceOutputLabel.text = @"...";
     self.recognizedWordsTextView.text = [self.recognizedWords componentsJoinedByString:@", "];
+    self.detectedWordsTextView.text = nil;
     
     // Start listening:
     [self.openEarsEventsObserver setDelegate:self];
@@ -62,7 +64,64 @@
 - (NSArray *)recognizedWords
 {
     if (!_recognizedWords) {
-        _recognizedWords = @[@"WORD", @"STATEMENT", @"OTHER WORD", @"A PHRASE"];
+        _recognizedWords = @[
+                             @"AIR SUPPORT",
+                             @"BANDWIDTH",
+                             @"BHAG",
+                             @"BIG ASK",
+                             @"BIO-BREAK",
+                             @"BRAIN DUMP",
+                             @"BUY-IN",
+                             @"CIRCLE BACK",
+                             @"COME-TO-JESUS",
+                             @"CORE COMPETENCY",
+                             @"CYA",
+                             @"DRILL DOWN",
+                             @"DUCKS IN A ROW",
+                             @"ELEVATOR PITCH",
+                             @"EOD",
+                             @"EXIT STRATEGY",
+                             @"GOLDEN HANDCUFFS",
+                             @"GREEN FATIGUE",
+                             @"IDEATE",
+                             @"LIAISE",
+                             @"LOW-HANGING FRUIT",
+                             @"MOMMY TRACK",
+                             @"MOVE THE NEEDLE",
+                             @"MULTITASK",
+                             @"NET-NET",
+                             @"OFFLINE",
+                             @"ON THE SAME PAGE",
+                             @"OPEN THE KIMONO",
+                             @"OUT OF POCKET",
+                             @"OUTSIDE THE BOX",
+                             @"OUTSOURCE",
+                             @"PAIN POINT",
+                             @"PARADIGM SHIFT",
+                             @"PARKING LOT",
+                             @"PER",
+                             @"PING",
+                             @"PROACTIVE",
+                             @"QUARTERBACK",
+                             @"REPURPOSE",
+                             @"RESULTS-DRIVEN",
+                             @"REVERBIAGIZE",
+                             @"RIGHTSIZED",
+                             @"SACRED COW",
+                             @"SHOOT THE PUPPY",
+                             @"SILO",
+                             @"SOCIALIZE",
+                             @"STRATEGIC INITIATIVE",
+                             @"SWEET SPOT",
+                             @"SYNERGY",
+                             @"TACTICAL",
+                             @"TEAM PLAYER",
+                             @"TRIAGE",
+                             @"THROUGHPUT",
+                             @"THROW UNDER THE BUS",
+                             @"VALUE PROPOSITION",
+                             @"WORK-LIFE BALANCE"
+                             ];
     }
     return _recognizedWords;
 }
@@ -108,6 +167,14 @@
     self.hypothesisOutputLabel.text = hypothesis;
     self.scoreOutputLabel.text = recognitionScore;
     self.utteranceOutputLabel.text = utteranceID;
+
+    NSString *oldWords = self.detectedWordsTextView.text;
+    NSString *newLine = oldWords ? @"\n" : @"";
+    newLine = [newLine stringByAppendingFormat:@"(%@) %@", recognitionScore, hypothesis];
+    self.detectedWordsTextView.text = [oldWords stringByAppendingString:newLine];
+    
+    NSRange range = NSMakeRange(self.detectedWordsTextView.text.length - 1, 1);
+    [self.detectedWordsTextView scrollRangeToVisible:range];
 }
 
 - (void) pocketsphinxDidStartCalibration {
